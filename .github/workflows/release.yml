@@ -64,6 +64,7 @@ jobs:
         prerelease: ${{ contains(github.ref_name, 'rc') }}
 
   docker-build:
+    if: github.repository == 'proxysql/orchestrator'
     strategy:
       fail-fast: false
       matrix:
@@ -114,6 +115,7 @@ jobs:
         retention-days: 1
 
   docker-merge:
+    if: github.repository == 'proxysql/orchestrator'
     needs: docker-build
     runs-on: ubuntu-latest
     steps:
